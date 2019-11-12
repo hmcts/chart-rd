@@ -1,0 +1,46 @@
+payment-api:
+  java:
+    secrets:
+      PCI_PAL_ACCOUNT_ID_CMC:
+        disabled: true
+      PCI_PAL_ACCOUNT_ID_PROBATE:
+        disabled: true
+      PCI_PAL_ACCOUNT_ID_DIVORCE:
+        disabled: true
+      PCI_PAL_API_URL:
+        disabled: true
+      PCI_PAL_API_KEY:
+        disabled: true
+      GOV_PAY_KEYS_PROBATE:
+        disabled: true
+      GOV_PAY_KEYS_DIVORCE:
+        disabled: true
+      GOV_PAY_KEYS_CMC:
+        disabled: true
+      GOV_PAY_KEYS_REFERENCE:
+        disabled: true
+      LIBERATA_KEYS_OAUTH2_CLIENT_ID:
+        disabled: true
+      LIBERATA_KEYS_OAUTH2_CLIENT_SECRET:
+        disabled: true
+      LIBERATA_KEYS_OAUTH2_USERNAME:
+        disabled: true
+      LIBERATA_KEYS_OAUTH2_PASSWORD:
+        disabled: true
+    environment:
+      GOV_PAY_AUTH_KEY_CMC: la0ohpqa9er1bub2hddieeesc6sabbbqn4smkkve7s9ailn3n9d3hbnhc3
+      GOV_PAY_AUTH_KEY_DIVORCE_FRONTEND: la0ohpqa9er1bub2hddieeesc6sabbbqn4smkkve7s9ailn3n9d3hbnhc3
+      GOV_PAY_AUTH_KEY_PROBATE_FRONTEND: la0ohpqa9er1bub2hddieeesc6sabbbqn4smkkve7s9ailn3n9d3hbnhc3
+      #TODO use CCD Chart instead
+      # CORE_CASE_DATA_API_URL: "{{ .Values.global.ccdDataStoreApiUrl }}"
+
+ccpay-bubble-frontend:
+  nodejs:
+    secrets:
+      IDAM_CLIENT_SECRET:
+        disabled: true
+global:
+  idamApiUrl: https://idam-api.aat.platform.hmcts.net
+  idamWebUrl: https://idam-web-public.aat.platform.hmcts.net
+  # ccdDataStoreApiUrl: http://ccd-data-store-api-aat.service.core-compute-aat.internal
+  # bubbleUrl: https://chart-ccpay-bubble.service.core-compute-preview.internal
