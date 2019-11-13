@@ -1,4 +1,4 @@
-name: chart-rd-user-profile pipeline
+name: chart-rd pipeline
 trigger:
   branches:
     include:
@@ -22,7 +22,7 @@ jobs:
       - template: steps/charts/validate.yaml@cnp-library
         parameters:
           chartName: rd
-          chartReleaseName: chart-rd-user-profile-ci-release
+          chartReleaseName: chart-rd-ci-test
           chartNamespace: chart-tests
           helmDeleteWait: "300"
           helmInstallWait: "300"
@@ -43,5 +43,5 @@ jobs:
       - template: steps/charts/release.yaml@cnp-library
         parameters:
           chartName: rd
-          chartReleaseName: chart-rd-user-profile
+          chartReleaseName: chart-rd
           chartNamespace: chart-tests
