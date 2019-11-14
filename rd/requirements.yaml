@@ -2,9 +2,12 @@ dependencies:
   - name: rd-user-profile-api
     version: ~0.0.5
     repository: '@hmctspublic'
+    condition: rd.rd-user-profile-api.enabled
   - name: rpe-service-auth-provider
     version: ~0.2.0
     repository: '@hmctspublic'
+    condition: rd.rpe-service-auth-provider.enabled
   - name: postgresql
     version: ~6.3.5
     repository: '@stable'
+    condition: rd.postgresql.enabled
