@@ -11,3 +11,6 @@ dependencies:
     version: ~6.3.5
     repository: '@stable'
     condition: rd.postgresql.enabled
+  - name: rd-profile-sync
+    version: ~0.0.4
+    repository: rd.rd-profile-sync.enabled

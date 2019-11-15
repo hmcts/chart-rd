@@ -5,6 +5,8 @@ rd:
     enabled: true
   rpe-service-auth-provider:
     enabled: true
+  rd-profile-sync:
+    enabled: true
 
 rd-user-profile-api:
   java:
