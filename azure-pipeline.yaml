@@ -39,5 +39,5 @@ jobs:
       - template: steps/charts/release.yaml@cnp-library
         parameters:
           chartName: rd
-          chartReleaseName: chart-rd
-          chartNamespace: chart-tests
+          chartReleaseName: chart-rd-ci-release
+          chartNamespace: rd
