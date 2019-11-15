@@ -16,7 +16,7 @@ rd-user-profile-api:
     aadIdentityName: rd
     image: 'hmctspublic.azurecr.io/rd/user-profile-api:latest'
     environment:
-      POSTGRES_HOST: "{{ tpl .Values.global.postgresqlHostName $}}:5432/dbuserprofile"
+      POSTGRES_HOST: "{{ tpl .Values.global.postgresqlHostName $}}:5432/rd"
       POSTGRES_USERNAME: "{{ .Values.global.postgresqlUsername}}"
       POSTGRES_PASSWORD: "{{ .Values.global.postgresqlPassword}}"
       S2S_URL: "{{ tpl .Values.global.s2sUrl $}}"
