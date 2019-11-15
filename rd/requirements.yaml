@@ -13,4 +13,5 @@ dependencies:
     condition: rd.postgresql.enabled
   - name: rd-profile-sync
     version: ~0.0.4
-    repository: rd.rd-profile-sync.enabled
+    repository: '@hmctspublic'
+    condition: rd.rd-profile-sync.enabled
