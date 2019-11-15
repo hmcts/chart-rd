@@ -18,8 +18,8 @@ jobs:
       - template: steps/charts/validate.yaml@cnp-library
         parameters:
           chartName: rd
-          chartReleaseName: chart-rd-ci-test
-          chartNamespace: chart-tests
+          chartReleaseName: chart-rd-ci-release
+          chartNamespace: rd
           helmDeleteWait: "300"
           helmInstallWait: "300"
           helmInstallTimeout: "900"
