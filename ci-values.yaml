@@ -1,12 +1,10 @@
-tags:
-  idam-pr: false
-
-ingressHost: chart-ccd-release.service.core-compute-preview.internal
-ingressIP: "10.97.17.51"
-consulIP: "10.97.11.254"
-
-readinessDelay: 90
-livenessDelay: 90
+rd-user-profile-api:
+  java:
+    environment:
+      POSTGRES_HOST: "{{ tpl .Values.global.postgresqlHostName $}}:5432/rd"
+      POSTGRES_USERNAME: "{{ .Values.global.postgresqlUsername}}"
+      POSTGRES_PASSWORD: "{{ .Values.global.postgresqlPassword}}"
+      S2S_URL: "{{ tpl .Values.global.s2sUrl $}}"
 
 global:
   idamApiUrl: https://idam-api.aat.platform.hmcts.net
