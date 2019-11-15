@@ -1,8 +1,4 @@
 name: chart-rd pipeline
-trigger:
-  branches:
-    include:
-      - refs/tags/*
 pr:
   branches:
     include:
