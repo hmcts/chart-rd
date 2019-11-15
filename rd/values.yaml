@@ -1,20 +1,30 @@
-java:
-  applicationPort: 8091
-  ingressHost: rd-user-profile-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
-  aadIdentityName: rd
-  image: 'hmctspublic.azurecr.io/rd/user-profile-api:latest'
-  environment:
-    POSTGRES_HOST: rd-user-profile-api-postgres-db-{{ .Values.global.environment }}.postgres.database.azure.com
-    POSTGRES_USERNAME: dbuserprofile@rd-user-profile-api-postgres-db-{{ .Values.global.environment }}
-    POSTGRES_NAME: dbuserprofile
-    POSTGRES_PORT: 5432
-    S2S_URL: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
-  keyVaults:
-    rd:
-      secrets:
-        - s2s-secret
-        - user-profile-api-POSTGRES-PASS
-        - AppInsightsInstrumentationKey
+rd:
+  postgresql:
+    enabled: true
+  rd-user-profile-api:
+    enabled: true
+  rpe-service-auth-provider:
+    enabled: true
+
+rd-user-profile-api:
+  java:
+    applicationPort: 8091
+    ingressHost: ""
+    releaseNameOverride: "{{ .Release.Name }}-rd-user-profile-api"
+    aadIdentityName: rd
+    image: 'hmctspublic.azurecr.io/rd/user-profile-api:latest'
+    environment:
+      POSTGRES_HOST: "{{ tpl .Values.global.postgresqlHostName $}}"
+      POSTGRES_NAME: "dbuserprofile"
+      POSTGRES_USERNAME: "{{ .Values.global.postgresqlUsername}}"
+      POSTGRES_PASSWORD: "{{ .Values.global.postgresqlPassword}}"
+      S2S_URL: "{{ tpl .Values.global.s2sUrl $}}"
+    keyVaults:
+      rd:
+        secrets:
+          - s2s-secret
+          - user-profile-api-POSTGRES-PASS
+          - AppInsightsInstrumentationKey
 postgresql:
   # Due to stability issues in the Preview environment, please disable persistance in the consuming chart for the Preview environment.
   persistence:
