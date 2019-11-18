@@ -30,7 +30,7 @@ rd-user-profile-api:
 rpe-service-auth-provider:
   java:
     ingressHost: ""
-    releaseNameOverride: service-auth-s2s
+    releaseNameOverride: "{{ .Release.Name }}-service-auth-s2s"
     readinessDelay: 180
     livenessDelay: 180
     keyVaults:
