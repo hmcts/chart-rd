@@ -5,15 +5,15 @@ rd:
     enabled: true
   rpe-service-auth-provider:
     enabled: true
-  rd-profile-sync:
-    enabled: true
+  #rd-profile-sync:
+    #enabled: true
 
 rd-user-profile-api:
   java:
     applicationPort: 8091
     ingressHost: ""
     releaseNameOverride: "{{ .Release.Name }}-rd-user-profile-api"
-    aadIdentityName: rd
+    #aadIdentityName: rd
     image: 'hmctspublic.azurecr.io/rd/user-profile-api:latest'
     environment:
       POSTGRES_HOST: "{{ tpl .Values.global.postgresqlHostName $}}"
@@ -32,10 +32,11 @@ rd-user-profile-api:
 rpe-service-auth-provider:
   java:
     ingressHost: ""
-    releaseNameOverride: "{{ .Release.Name }}-service-auth-s2s"
-    readinessDelay: 180
-    livenessDelay: 180
-    keyVaults:
+    image: hmctspublic.azurecr.io/rpe/service-auth-provider:latest
+    releaseNameOverride: "{{ .Release.Name }}-s2s"
+    #readinessDelay: 180
+    #livenessDelay: 180
+    #keyVaults:
     environment:
       TESTING_SUPPORT_ENABLED: 'true'
       MICROSERVICEKEYS_CCD_ADMIN: AAAAAAAAAAAAAAAA

@@ -1,9 +1,9 @@
 rd-user-profile-api:
   java:
     environment:
-      POSTGRES_HOST: "{{ tpl .Values.global.postgresqlHostName $}}:5432/rd"
-      POSTGRES_USERNAME: "{{ .Values.global.postgresqlUsername}}"
-      POSTGRES_PASSWORD: "{{ .Values.global.postgresqlPassword}}"
+      #POSTGRES_HOST: "{{ tpl .Values.global.postgresqlHostName $}}:5432/rd"
+      #POSTGRES_USERNAME: "{{ .Values.global.postgresqlUsername}}"
+      #POSTGRES_PASSWORD: "{{ .Values.global.postgresqlPassword}}"
       S2S_URL: "{{ tpl .Values.global.s2sUrl $}}"
 
 global:
