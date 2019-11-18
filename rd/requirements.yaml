@@ -1,9 +1,8 @@
 dependencies:
-#  TODO currently failing in build: https://dev.azure.com/hmcts/CNP/_build
-#  - name: rd-user-profile-api
-#    version: ~0.0.5
-#    repository: '@hmctspublic'
-#    condition: rd.rd-user-profile-api.enabled
+  - name: rd-user-profile-api
+    version: ~0.0.5
+    repository: '@hmctspublic'
+    condition: rd.rd-user-profile-api.enabled
   - name: rpe-service-auth-provider
     version: ~0.2.0
     repository: '@hmctspublic'
