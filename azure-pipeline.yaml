@@ -1,4 +1,8 @@
 name: chart-rd pipeline
+trigger:
+  branches:
+    include:
+      - refs/tags/*
 pr:
   branches:
     include:
@@ -39,5 +43,5 @@ jobs:
       - template: steps/charts/release.yaml@cnp-library
         parameters:
           chartName: rd
-          chartReleaseName: chart-rd-ci-release
+          chartReleaseName: chart-rd-release
           chartNamespace: rd
