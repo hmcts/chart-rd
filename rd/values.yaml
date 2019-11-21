@@ -22,12 +22,7 @@ rd-user-profile-api:
       POSTGRES_PASSWORD: "{{ .Values.global.postgresqlPassword}}"
       POSTGRES_CONNECTION_OPTIONS: "?sslmode=allow"
       S2S_URL: "{{ tpl .Values.global.s2sUrl $}}"
-    keyVaults:
-      rd:
-        secrets:
-          - s2s-secret
-          - user-profile-api-POSTGRES-PASS
-          - AppInsightsInstrumentationKey
+      S2S_SECRET: AAAAAAAAAAAAAAAA
 
 rpe-service-auth-provider:
   java:
@@ -39,11 +34,12 @@ rpe-service-auth-provider:
     #keyVaults:
     environment:
       TESTING_SUPPORT_ENABLED: 'true'
-      MICROSERVICEKEYS_CCD_ADMIN: AAAAAAAAAAAAAAAA
-      MICROSERVICEKEYS_CCD_DATA: AAAAAAAAAAAAAAAA
-      MICROSERVICEKEYS_CCD_DEFINITION: AAAAAAAAAAAAAAAA
-      MICROSERVICEKEYS_CCD_GW: AAAAAAAAAAAAAAAA
-      MICROSERVICEKEYS_CCD_PS: AAAAAAAAAAAAAAAA
+      MICROSERVICEKEYS_RD_USER_PROFILE_API: AAAAAAAAAAAAAAAA
+#      MICROSERVICEKEYS_CCD_ADMIN: AAAAAAAAAAAAAAAA
+#      MICROSERVICEKEYS_CCD_DATA: AAAAAAAAAAAAAAAA
+#      MICROSERVICEKEYS_CCD_DEFINITION: AAAAAAAAAAAAAAAA
+#      MICROSERVICEKEYS_CCD_GW: AAAAAAAAAAAAAAAA
+#      MICROSERVICEKEYS_CCD_PS: AAAAAAAAAAAAAAAA
 
 global:
   devMode: true
