@@ -2,4 +2,4 @@ apiVersion: v1
 appVersion: "1.0"
 description: A Helm chart for User Profile and k8s DBG rd-user-profile disabled TODO add rd-professional-api and rd-profile-sync
 name: rd 
-version: 0.1.1
+version: 0.1.2
