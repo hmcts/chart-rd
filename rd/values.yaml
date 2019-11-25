@@ -45,8 +45,8 @@ global:
   devMode: true
   postgresqlUsername: hmcts
   postgresqlPassword: hmcts
-  idamApiUrl: "https://idam-api.demo.platform.hmcts.net"
-  idamWebUrl: idam-web-public.demo.platform.hmcts.net
+  idamApiUrl: ""
+  idamWebUrl: ""
   s2sUrl: "http://{{ .Release.Name }}-s2s"
   postgresqlHostName: "{{ .Release.Name }}-postgresql"
 postgresql:
