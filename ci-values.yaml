@@ -1,14 +1,13 @@
 rd-user-profile-api:
   java:
     environment:
-      POSTGRES_HOST: ""{{ .Release.Name }}-postgresql""
-      POSTGRES_USERNAME: "{{ .Values.global.postgresqlUsername}}"
-      POSTGRES_PASSWORD: "{{ .Values.global.postgresqlPassword}}"
+#      POSTGRES_HOST: ""{{ .Release.Name }}-postgresql""
+#      POSTGRES_USERNAME: "{{ .Values.global.postgresqlUsername}}"
+#      POSTGRES_PASSWORD: "{{ .Values.global.postgresqlPassword}}"
       S2S_URL: "{{ tpl .Values.global.s2sUrl $}}"
-      S2S_SECRET: AAAAAAAAAAAAAAAA
+#      S2S_SECRET: AAAAAAAAAAAAAAAA
 
 global:
-  idamApiUrl: "https://idam-api.demo.platform.hmcts.net"
-  idamWebUrl: idam-web-public.demo.platform.hmcts.net
-  postgresqlUsername: hmcts
-  postgresqlPassword: hmcts
+  idamApiUrl: https://idam-api.aat.platform.hmcts.net
+  idamWebUrl: https://idam-web-public.aat.platform.hmcts.net
+  environment: aat
