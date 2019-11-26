@@ -23,7 +23,7 @@ rd-user-profile-api:
       POSTGRES_CONNECTION_OPTIONS: "?sslmode=allow"
       S2S_URL: "{{ tpl .Values.global.s2sUrl $}}"
       S2S_SECRET: AAAAAAAAAAAAAAAA
-
+      AUTH_IDAM_CLIENT_BASEURL: "{{ .Values.global.idamApiUrl }}"
 rpe-service-auth-provider:
   java:
     ingressHost: ""
