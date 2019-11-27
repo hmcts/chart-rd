@@ -24,6 +24,7 @@ rd-user-profile-api:
       S2S_URL: "{{ tpl .Values.global.s2sUrl $}}"
       S2S_SECRET: AAAAAAAAAAAAAAAA
       AUTH_IDAM_CLIENT_BASEURL: "{{ .Values.global.idamApiUrl }}"
+
 rpe-service-auth-provider:
   java:
     ingressHost: ""
@@ -35,6 +36,7 @@ rpe-service-auth-provider:
     environment:
       TESTING_SUPPORT_ENABLED: 'true'
       MICROSERVICEKEYS_RD_USER_PROFILE_API: AAAAAAAAAAAAAAAA
+
 #      MICROSERVICEKEYS_CCD_ADMIN: AAAAAAAAAAAAAAAA
 #      MICROSERVICEKEYS_CCD_DATA: AAAAAAAAAAAAAAAA
 #      MICROSERVICEKEYS_CCD_DEFINITION: AAAAAAAAAAAAAAAA
@@ -56,6 +58,7 @@ postgresql:
   resources:
     requests:
       cpu: 25m
+
   initdbScripts:
     init.sql: |-
       CREATE DATABASE "dbuserprofile" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
