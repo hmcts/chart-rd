@@ -24,6 +24,28 @@ rd-user-profile-api:
       S2S_URL: "{{ tpl .Values.global.s2sUrl $}}"
       S2S_SECRET: AAAAAAAAAAAAAAAA
       IDAM_URL: "{{ .Values.global.idamApiUrl }}"
+      AUTH_IDAM_CLIENT_BASEURL: "https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net"
+
+
+rd-professional-api:
+  java:
+    applicationPort: 8091
+    ingressHost: ""
+    releaseNameOverride: "{{ .Release.Name }}-rd-user-profile-api"
+    #aadIdentityName: rd
+    image: 'hmctspublic.azurecr.io/rd/user-profile-api:latest'
+    environment:
+      POSTGRES_HOST: "{{ tpl .Values.global.postgresqlHostName $}}"
+      POSTGRES_NAME: "dbrefdata"
+      POSTGRES_USERNAME: "{{ .Values.global.postgresqlUsername}}"
+      POSTGRES_PASSWORD: "{{ .Values.global.postgresqlPassword}}"
+      POSTGRES_CONNECTION_OPTIONS: "?sslmode=allow"
+      S2S_URL: "{{ tpl .Values.global.s2sUrl $}}"
+      S2S_SECRET: AAAAAAAAAAAAAAAA
+      IDAM_URL: "{{ .Values.global.idamApiUrl }}"
+      AUTH_IDAM_CLIENT_BASEURL: https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net
+      USER_PROFILE_URL: http://rd-user-profile-api-{{ .Values.global.environment }}.platform.hmcts.net
+      CCD_URL: https://ccd-user-profile-api-{{ .Values.global.environment }}.platform.hmcts.net
 
 rpe-service-auth-provider:
   java:
@@ -36,6 +58,7 @@ rpe-service-auth-provider:
     environment:
       TESTING_SUPPORT_ENABLED: 'true'
       MICROSERVICEKEYS_RD_USER_PROFILE_API: AAAAAAAAAAAAAAAA
+      MICROSERVICEKEY_RD_PROFESSIONAL_API: AAAAAAAAAAAAAAAA
 
 #      MICROSERVICEKEYS_CCD_ADMIN: AAAAAAAAAAAAAAAA
 #      MICROSERVICEKEYS_CCD_DATA: AAAAAAAAAAAAAAAA
