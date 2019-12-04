@@ -38,7 +38,7 @@ rd-professional-api:
     image: 'hmctspublic.azurecr.io/rd/professional-api:demo'
     environment:
       POSTGRES_HOST: "{{ tpl .Values.global.postgresqlHostName $}}"
-      POSTGRES_NAME: "dbrefdata"
+      POSTGRES_NAME: "{{ .Values.postgresql.postgresqlDatabase}}"
       POSTGRES_USERNAME: "{{ .Values.global.postgresqlUsername}}"
       POSTGRES_PASSWORD: "{{ .Values.global.postgresqlPassword}}"
       POSTGRES_CONNECTION_OPTIONS: "?sslmode=allow"
