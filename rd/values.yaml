@@ -31,11 +31,11 @@ rd-user-profile-api:
 
 rd-professional-api:
   java:
-    applicationPort: 8091
+    applicationPort: 8090
     ingressHost: ""
     releaseNameOverride: "{{ .Release.Name }}-rd-professional-api"
     #aadIdentityName: rd
-    image: 'hmctspublic.azurecr.io/rd/user-profile-api:latest'
+    image: 'hmctspublic.azurecr.io/rd/professional-api:latest'
     environment:
       POSTGRES_HOST: "{{ tpl .Values.global.postgresqlHostName $}}"
       POSTGRES_NAME: "dbrefdata"
@@ -48,6 +48,7 @@ rd-professional-api:
       AUTH_IDAM_CLIENT_BASEURL: https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net
       USER_PROFILE_URL: http://rd-user-profile-api-{{ .Values.global.environment }}.platform.hmcts.net
       CCD_URL: https://ccd-user-profile-api-{{ .Values.global.environment }}.platform.hmcts.net
+
 
 rpe-service-auth-provider:
   java:
@@ -87,6 +88,7 @@ postgresql:
   initdbScripts:
     init.sql: |-
       CREATE DATABASE "dbuserprofile" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
+      CREATE DATABASE "dbrefdata" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
 
   postgresqlUsername: hmcts
   postgresqlPassword: hmcts

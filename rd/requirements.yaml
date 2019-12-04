@@ -1,8 +1,12 @@
 dependencies:
   - name: rd-user-profile-api
-    version: ~0.0.5
+    version: ~0.0.6
     repository: '@hmctspublic'
     condition: rd.rd-user-profile-api.enabled
+  - name: rd-professional-api
+    version: ~0.0.4
+    repository: '@hmctspublic'
+    condition: rd.rd-professional-api.enabled
   - name: rpe-service-auth-provider
     version: ~0.2.5
     repository: '@hmctspublic'
