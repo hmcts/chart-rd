@@ -35,7 +35,7 @@ rd-professional-api:
     ingressHost: ""
     releaseNameOverride: "{{ .Release.Name }}-rd-professional-api"
     #aadIdentityName: rd
-    image: 'hmctspublic.azurecr.io/rd/user-profile-api:latest'
+    image: 'hmctspublic.azurecr.io/rd/professional-api:demo'
     environment:
       POSTGRES_HOST: "{{ tpl .Values.global.postgresqlHostName $}}"
       POSTGRES_NAME: "dbrefdata"
