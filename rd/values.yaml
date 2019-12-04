@@ -3,6 +3,8 @@ rd:
     enabled: true
   rd-user-profile-api:
     enabled: true
+  rd-professional-api:
+    enabled: true
   rpe-service-auth-provider:
     enabled: true
   #rd-profile-sync:
