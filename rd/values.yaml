@@ -31,7 +31,7 @@ rd-professional-api:
   java:
     applicationPort: 8091
     ingressHost: ""
-    releaseNameOverride: "{{ .Release.Name }}-rd-user-profile-api"
+    releaseNameOverride: "{{ .Release.Name }}-rd-professional-api"
     #aadIdentityName: rd
     image: 'hmctspublic.azurecr.io/rd/user-profile-api:latest'
     environment:
