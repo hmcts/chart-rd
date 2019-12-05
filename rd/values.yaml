@@ -7,8 +7,8 @@ rd:
     enabled: true
   rpe-service-auth-provider:
     enabled: true
-  #rd-profile-sync:
-    #enabled: true
+  rd-profile-sync:
+    enabled: true
 
 rd-user-profile-api:
   java:
@@ -48,6 +48,24 @@ rd-professional-api:
       USER_PROFILE_URL: http://rd-user-profile-api-demo.platform.hmcts.net
       CCD_URL: https://ccd-user-profile-api-demo.platform.hmcts.net
 
+rd-profile-sync:
+  java:
+    applicationPort: 8093
+    ingressHost: ""
+    releaseNameOverride: "{{ .Release.Name }}-rd-profile-sync"
+    image: 'hmctspublic.azurecr.io/rd/profile-sync:demo'
+    environment:
+      POSTGRES_HOST: "{{ tpl .Values.global.postgresqlHostName $}}"
+      POSTGRES_NAME: "dbsyncdata"
+      POSTGRES_USERNAME: "{{ .Values.global.postgresqlUsername}}"
+      POSTGRES_PASSWORD: "{{ .Values.global.postgresqlPassword}}"
+      POSTGRES_CONNECTION_OPTIONS: "?sslmode=allow"
+      S2S_URL: "{{ tpl .Values.global.s2sUrl $}}"
+      S2S_SECRET: AAAAAAAAAAAAAAAA
+      IDAM_URL: "{{ .Values.global.idamApiUrl }}"
+      AUTH_IDAM_CLIENT_BASEURL: "{{ .Values.global.idamApiUrl }}"
+      USER_PROFILE_URL: http://rd-user-profile-api-demo.platform.hmcts.net
+
 
 rpe-service-auth-provider:
   java:
@@ -81,6 +99,7 @@ postgresql:
   initdbScripts:
     init.sql: |-
       CREATE DATABASE "dbrefdata" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
+      CREATE DATABASE "dbsyncdata" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
       CREATE DATABASE "dbuserprofile" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
 
   postgresqlUsername: hmcts

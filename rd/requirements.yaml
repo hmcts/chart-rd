@@ -7,6 +7,10 @@ dependencies:
     version: ~0.0.4
     repository: '@hmctspublic'
     condition: rd.rd-professional-api.enabled
+  - name: rd-profile-sync
+    version: ~0.0.4
+    repository: '@hmctspublic'
+    condition: rd.rd-profile-sync.enabled
   - name: rpe-service-auth-provider
     version: ~0.2.5
     repository: '@hmctspublic'
