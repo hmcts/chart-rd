@@ -26,8 +26,7 @@ rd-user-profile-api:
       S2S_URL: "{{ tpl .Values.global.s2sUrl $}}"
       S2S_SECRET: AAAAAAAAAAAAAAAA
       IDAM_URL: "{{ .Values.global.idamApiUrl }}"
-      AUTH_IDAM_CLIENT_BASEURL: "https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net"
-
+      AUTH_IDAM_CLIENT_BASEURL: "{{ .Values.global.idamApiUrl }}"
 
 rd-professional-api:
   java:
@@ -45,9 +44,9 @@ rd-professional-api:
       S2S_URL: "{{ tpl .Values.global.s2sUrl $}}"
       S2S_SECRET: AAAAAAAAAAAAAAAA
       IDAM_URL: "{{ .Values.global.idamApiUrl }}"
-      AUTH_IDAM_CLIENT_BASEURL: https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net
-      USER_PROFILE_URL: http://rd-user-profile-api-{{ .Values.global.environment }}.platform.hmcts.net
-      CCD_URL: https://ccd-user-profile-api-{{ .Values.global.environment }}.platform.hmcts.net
+      AUTH_IDAM_CLIENT_BASEURL: "{{ .Values.global.idamApiUrl }}"
+      USER_PROFILE_URL: http://rd-user-profile-api-demo.platform.hmcts.net
+      CCD_URL: https://ccd-user-profile-api-demo.platform.hmcts.net
 
 
 rpe-service-auth-provider:
@@ -62,12 +61,6 @@ rpe-service-auth-provider:
       TESTING_SUPPORT_ENABLED: 'true'
       MICROSERVICEKEYS_RD_USER_PROFILE_API: AAAAAAAAAAAAAAAA
       MICROSERVICEKEY_RD_PROFESSIONAL_API: AAAAAAAAAAAAAAAA
-
-#      MICROSERVICEKEYS_CCD_ADMIN: AAAAAAAAAAAAAAAA
-#      MICROSERVICEKEYS_CCD_DATA: AAAAAAAAAAAAAAAA
-#      MICROSERVICEKEYS_CCD_DEFINITION: AAAAAAAAAAAAAAAA
-#      MICROSERVICEKEYS_CCD_GW: AAAAAAAAAAAAAAAA
-#      MICROSERVICEKEYS_CCD_PS: AAAAAAAAAAAAAAAA
 
 global:
   devMode: true
@@ -87,8 +80,8 @@ postgresql:
 
   initdbScripts:
     init.sql: |-
-      CREATE DATABASE "dbuserprofile" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
       CREATE DATABASE "dbrefdata" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
+      CREATE DATABASE "dbuserprofile" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
 
   postgresqlUsername: hmcts
   postgresqlPassword: hmcts
